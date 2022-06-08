@@ -4,6 +4,7 @@ import months from '../utils/getMonthName'
 
 export default function DuePayments( {student_orders, checkDueDate, setTotal} ) {
   const [selectedOrders, setSelectedOrders] = useState({selected: []})
+  const [display, setDisplay] = useState(false)
 
   useEffect(() => {
     let total = 0
@@ -37,9 +38,9 @@ export default function DuePayments( {student_orders, checkDueDate, setTotal} ) 
     <>
       <div className="flex justify-between gap-4">
         <h2 className='font-bold'>Cuotas pendientes</h2>
-        <span>V</span>
+        <span onClick={() => setDisplay(current => !current)}>V</span>
       </div>
-      <div>
+      <div className={`${!!display ? 'block' : 'hidden'}`}>
         {
           student_orders.map(order => (
             <CheckboxItem key={order.id} id={order.id} checked={selectedOrders.selected.includes(order.id)} handleCheckbox={() => handleCheckbox(order.id)} >

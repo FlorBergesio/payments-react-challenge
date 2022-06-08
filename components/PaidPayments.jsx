@@ -1,14 +1,16 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import months from '../utils/getMonthName'
 
 export default function PaidPayments( {student_orders} ) {
+  const [display, setDisplay] = useState(false)
+
   return (
     <>
       <div className="flex justify-between gap-4">
         <h2 className='font-bold'>Cuotas pagadas</h2>
-        <span>V</span>
+        <span onClick={() => setDisplay(current => !current)}>V</span>
       </div>
-      <div>
+      <div className={`${!!display ? 'block' : 'hidden'}`}>
         {
           student_orders.map(order => (
             <div className="flex justify-between gap-4 my-2" key={order.id}>
