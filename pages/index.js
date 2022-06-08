@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Card from '../components/Card';
 import DuePayments from '../components/DuePayments';
 import FutureDues from '../components/FutureDues';
@@ -31,13 +31,18 @@ export async function getStaticProps(context) {
 }
 
 export default function Home(props) {
-  const [total, setTotal] = useState(0)
+  const [total, setTotal] = useState(0.00)
+  const [duePaymentsTotal, setDuePaymentsTotal] = useState(0.00)
 
   const checkDueDate = (date) => {
     const formattedDate = new Date(date)
     const today = new Date();
     return formattedDate < today
   }
+
+  useEffect(() => {
+    setTotal(duePaymentsTotal)
+  }, [duePaymentsTotal])
 
   return (
     <div>
@@ -64,7 +69,7 @@ export default function Home(props) {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 
           <Card>
-            <StudentInfo student_info={props.student_info} total={total} />
+            <StudentInfo student_info={props.student_info} total={total.toFixed(2)} />
           </Card>
 
           <Card>
@@ -72,7 +77,7 @@ export default function Home(props) {
           </Card>
 
           <Card>
-            <DuePayments student_orders={props.student_orders} checkDueDate={checkDueDate} />
+            <DuePayments student_orders={props.student_orders} checkDueDate={checkDueDate} setTotal={setDuePaymentsTotal} />
           </Card>
 
           <Card>
