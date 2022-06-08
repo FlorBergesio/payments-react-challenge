@@ -68,7 +68,7 @@ export default function Home(props) {
 
       <main className='p-4'>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 gap-4">
 
           <Card>
             <StudentInfo student_info={props.student_info} total={total.toFixed(2)} />
