@@ -33,6 +33,7 @@ export async function getStaticProps(context) {
 export default function Home(props) {
   const [total, setTotal] = useState(0.00)
   const [duePaymentsTotal, setDuePaymentsTotal] = useState(0.00)
+  const [futurePaymentsTotal, setFuturePaymentsTotal] = useState(0.00)
 
   const checkDueDate = (date) => {
     const formattedDate = new Date(date)
@@ -41,8 +42,8 @@ export default function Home(props) {
   }
 
   useEffect(() => {
-    setTotal(duePaymentsTotal)
-  }, [duePaymentsTotal])
+    setTotal(duePaymentsTotal + futurePaymentsTotal)
+  }, [duePaymentsTotal, futurePaymentsTotal])
 
   return (
     <div>
@@ -73,15 +74,15 @@ export default function Home(props) {
           </Card>
 
           <Card>
-            <PaidPayments />
+            <PaidPayments student_orders={props.student_orders.filter(order => order.status === "PAID")} />
           </Card>
 
           <Card>
-            <DuePayments student_orders={props.student_orders} checkDueDate={checkDueDate} setTotal={setDuePaymentsTotal} />
+            <DuePayments student_orders={props.student_orders.filter(order => order.status === "DUE")} checkDueDate={checkDueDate} setTotal={setDuePaymentsTotal} />
           </Card>
 
           <Card>
-            <FutureDues />
+            <FutureDues student_orders={props.student_orders.filter(order => order.status === "OUTSTANDING")} checkDueDate={checkDueDate} setTotal={setFuturePaymentsTotal} />
           </Card>
 
         </div>
