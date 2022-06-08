@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import months from '../utils/getMonthName'
 
 export default function PaidPayments( {student_orders} ) {
   return (
@@ -13,7 +14,7 @@ export default function PaidPayments( {student_orders} ) {
             <div className="flex justify-between gap-4 my-2" key={order.id}>
               <div className="text-left">
                 <h3 className="text-lg">{order.name}</h3>
-                <span className="text-sm">Pagado el {`${new Date(order.payin.created).getDate()} de ${new Date(order.payin.created).getMonth() + 1}.`}</span>
+                <span className="text-sm">Pagado el {`${new Date(order.payin.created).getDate()} de ${months[new Date(order.payin.created).getMonth()].shortNameSpa}.`}</span>
               </div>
               <div className="text-right">
                 →
