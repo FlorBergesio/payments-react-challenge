@@ -4,7 +4,7 @@ export default function PaidPayments( {student_orders} ) {
   return (
     <>
       <div className="flex justify-between gap-4">
-        <h2 className='font-bold'>Cuotas pendientes</h2>
+        <h2 className='font-bold'>Cuotas pagadas</h2>
         <span>V</span>
       </div>
       <div>
