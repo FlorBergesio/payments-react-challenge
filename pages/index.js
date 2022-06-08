@@ -5,6 +5,7 @@ import Card from '../components/Card';
 import DuePayments from '../components/DuePayments';
 import FutureDues from '../components/FutureDues';
 import PaidPayments from '../components/PaidPayments';
+import PaymentButton from '../components/PaymentButton';
 import StudentInfo from '../components/StudentInfo';
 
 export async function getStaticProps(context) {
@@ -88,6 +89,8 @@ export default function Home(props) {
         </div>
 
       </main>
+
+      <PaymentButton total={total} />
 
     </div>
   )
