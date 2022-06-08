@@ -6,8 +6,11 @@ export default function PaidPayments( {student_orders} ) {
 
   return (
     <>
-      <div className="flex justify-between gap-4">
-        <h2 className='font-bold'>Cuotas pagadas</h2>
+      <div className="flex justify-between items-center gap-4">
+        <div>
+          <h2 className='font-bold'>Cuotas pagadas</h2>
+          <span className="text-gray-600 text-sm">Dale click para expandir</span>
+        </div>
         <span onClick={() => setDisplay(current => !current)}>V</span>
       </div>
       <div className={`${!!display ? 'block' : 'hidden'}`}>

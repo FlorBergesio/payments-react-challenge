@@ -36,8 +36,11 @@ export default function DuePayments( {student_orders, checkDueDate, setTotal} ) 
 
   return (
     <>
-      <div className="flex justify-between gap-4">
-        <h2 className='font-bold'>Cuotas pendientes</h2>
+      <div className="flex justify-between items-center gap-4">
+        <div>
+          <h2 className='font-bold'>Cuotas pendientes</h2>
+          <span className={`${(selectedOrders.selected.length == 0) ? 'block' : 'hidden'} text-gray-600 text-sm`}>Puedes seleccionar más de uno</span>
+        </div>
         <span onClick={() => setDisplay(current => !current)}>V</span>
       </div>
       <div className={`${!!display ? 'block' : 'hidden'}`}>
