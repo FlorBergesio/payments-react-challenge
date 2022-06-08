@@ -45,7 +45,7 @@ export default function DuePayments( {student_orders, checkDueDate, setTotal} ) 
               <div className="flex justify-between gap-4">
                 <div className="text-left">
                   <h3 className="text-lg">{order.name}</h3>
-                  <p className="text-sm">{`${checkDueDate(order.due) ? 'Vencido el ' : 'Vence el '} ${new Date(order.due).getDate()} de ${new Date(order.due).toLocaleString('default', { month: 'short' })}.`}</p>
+                  <p className="text-sm">{`${checkDueDate(order.due) ? 'Vencido el ' : 'Vence el '} ${new Date(order.due).getDate()} de ${new Date(order.due).getMonth() + 1}.`}</p>
                 </div>
                 <div className="text-right">
                   <p className="text-lg">$ {order.price}</p>
