@@ -11,7 +11,7 @@ export default function PaidPayments( {student_orders} ) {
           <h2 className='font-bold'>Cuotas pagadas</h2>
           <span className="text-gray-600 text-sm">Dale click para expandir</span>
         </div>
-        <span onClick={() => setDisplay(current => !current)}>V</span>
+        <span onClick={() => setDisplay(current => !current)}><i className="text-gray-400 text-lg fas fa-chevron-down"></i></span>
       </div>
       <div className={`${!!display ? 'block' : 'hidden'}`}>
         {
@@ -22,7 +22,7 @@ export default function PaidPayments( {student_orders} ) {
                 <span className="text-sm">Pagado el {`${new Date(order.payin.created).getDate()} de ${months[new Date(order.payin.created).getMonth()].shortNameSpa}.`}</span>
               </div>
               <div className="text-right">
-                →
+                <i className="text-gray-400 text-lg fas fa-chevron-right"></i>
               </div>
             </div>
           ))

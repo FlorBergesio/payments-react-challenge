@@ -48,7 +48,7 @@ export default function DuePayments( {student_orders, checkDueDate, setTotal, re
           <h2 className='font-bold'>Cuotas pendientes</h2>
           <span className={`${(selectedOrders.selected.length == 0) ? 'block' : 'hidden'} text-gray-600 text-sm`}>Puedes seleccionar más de uno</span>
         </div>
-        <span onClick={() => setDisplay(current => !current)}>V</span>
+        <span onClick={() => setDisplay(current => !current)}><i className="text-gray-400 text-lg fas fa-chevron-down"></i></span>
       </div>
       <div className={`${!!display ? 'block' : 'hidden'}`}>
         {

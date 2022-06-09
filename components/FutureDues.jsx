@@ -45,7 +45,7 @@ export default function FutureDues( {student_orders, checkDueDate, setTotal, res
     <>
       <div className="flex justify-between gap-4">
         <h2 className='font-bold'>Cuotas futuras</h2>
-        <span onClick={() => setDisplay(current => !current)}>V</span>
+        <span onClick={() => setDisplay(current => !current)}><i className="text-gray-400 text-lg fas fa-chevron-down"></i></span>
       </div>
       <div className={`${!!display ? 'block' : 'hidden'}`}>
         {
