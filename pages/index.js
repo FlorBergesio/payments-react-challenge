@@ -35,11 +35,17 @@ export default function Home(props) {
   const [total, setTotal] = useState(0.00)
   const [duePaymentsTotal, setDuePaymentsTotal] = useState(0.00)
   const [futurePaymentsTotal, setFuturePaymentsTotal] = useState(0.00)
+  const [resetLists, setResetLists] = useState(false)
 
   const checkDueDate = (date) => {
     const formattedDate = new Date(date)
     const today = new Date();
     return formattedDate < today
+  }
+
+  const applyPayment = () => {
+    setTotal(0)
+    setResetLists(true)
   }
 
   useEffect(() => {
@@ -79,18 +85,18 @@ export default function Home(props) {
           </Card>
 
           <Card>
-            <DuePayments student_orders={props.student_orders.filter(order => order.status === "DUE")} checkDueDate={checkDueDate} setTotal={setDuePaymentsTotal} />
+            <DuePayments student_orders={props.student_orders.filter(order => order.status === "DUE")} checkDueDate={checkDueDate} setTotal={setDuePaymentsTotal} resetLists={resetLists} setResetLists={setResetLists} />
           </Card>
 
           <Card>
-            <FutureDues student_orders={props.student_orders.filter(order => order.status === "OUTSTANDING")} checkDueDate={checkDueDate} setTotal={setFuturePaymentsTotal} />
+            <FutureDues student_orders={props.student_orders.filter(order => order.status === "OUTSTANDING")} checkDueDate={checkDueDate} setTotal={setFuturePaymentsTotal} resetLists={resetLists} setResetLists={setResetLists} />
           </Card>
 
         </div>
 
       </main>
 
-      <PaymentButton total={total} />
+      <PaymentButton total={total} applyPayment={applyPayment} />
 
     </div>
   )

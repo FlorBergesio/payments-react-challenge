@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import CheckboxItem from "./CheckboxItem";
 import months from '../utils/getMonthName'
 
-export default function DuePayments( {student_orders, checkDueDate, setTotal} ) {
+export default function DuePayments( {student_orders, checkDueDate, setTotal, resetLists, setResetLists} ) {
   const [selectedOrders, setSelectedOrders] = useState({selected: []})
   const [display, setDisplay] = useState(false)
 
@@ -18,6 +18,13 @@ export default function DuePayments( {student_orders, checkDueDate, setTotal} ) 
     })
     setTotal(total)
   }, [selectedOrders])
+
+  useEffect(() => {
+    if (!!resetLists) {
+      setSelectedOrders({selected: []})
+      setResetLists(false)
+    }
+  }, [resetLists])
 
   const handleCheckbox = (id) => {
     let selected_array = selectedOrders.selected
