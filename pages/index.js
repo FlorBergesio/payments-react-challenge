@@ -59,11 +59,11 @@ export default function Home(props) {
         <meta name="description" content="Frontend challenge" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {console.log(props, total)}
 
       <nav className='w-full bg-white drop-shadow-lg p-4 flex items-center justify-center gap-4 mb-2'>
         <Image
           src={props.student_info.school.logo}
+          alt={props.student_info.school.name}
           width={64}
           height={64}
         />

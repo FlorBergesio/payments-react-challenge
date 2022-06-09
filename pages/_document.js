@@ -9,7 +9,7 @@ export default function Document() {
           href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
         />
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css"
-          integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous" 
+          integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossOrigin="anonymous" 
         />
       </Head>
       <body className='font-roboto bg-gray-100'>
